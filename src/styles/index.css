@@ -1,0 +1,248 @@
+/* ═══════════════════════════════════════════════════════
+   DESIGN SYSTEM — Interactive 3D Portfolio
+   Color palette extracted from mountain valley sunset image
+   ═══════════════════════════════════════════════════════ */
+
+/* ── CSS Custom Properties ────────────────────────────── */
+:root {
+  /* Primary Palette — Sunset Warmth */
+  --sunset-gold: #E8A838;
+  --sunset-gold-rgb: 232, 168, 56;
+  --warm-amber: #D4853A;
+  --warm-amber-rgb: 212, 133, 58;
+  --burnt-sienna: #C06030;
+  --burnt-sienna-rgb: 192, 96, 48;
+
+  /* Nature Accent Palette */
+  --meadow-green: #6B8F3C;
+  --meadow-green-rgb: 107, 143, 60;
+  --deep-forest: #3A5F28;
+  --wildflower-purple: #7B5EA7;
+  --wildflower-purple-rgb: 123, 94, 167;
+  --wildflower-orange: #E05A33;
+  --lavender-mist: #9B8EC4;
+
+  /* Neutrals */
+  --mountain-stone: #B8A89A;
+  --sky-cream: #F5EDE0;
+  --sky-cream-rgb: 245, 237, 224;
+  --warm-white: #FAF7F2;
+  --parchment: #EDE5D8;
+  --deep-earth: #1A1410;
+  --deep-earth-rgb: 26, 20, 16;
+  --charcoal: #2A2420;
+  --dark-surface: #1E1A16;
+
+  /* Glass System */
+  --glass-white: rgba(255, 255, 255, 0.07);
+  --glass-white-strong: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-strong: rgba(255, 255, 255, 0.22);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+  --glass-blur: 20px;
+  --glass-blur-strong: 40px;
+
+  /* Typography */
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Type Scale */
+  --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+  --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
+  --text-base: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+  --text-lg: clamp(1.05rem, 0.95rem + 0.5vw, 1.2rem);
+  --text-xl: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  --text-4xl: clamp(2.5rem, 1.8rem + 3.5vw, 4rem);
+  --text-hero: clamp(3rem, 2rem + 5vw, 5.5rem);
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-section: clamp(4rem, 3rem + 5vw, 8rem);
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+  --transition-fast: 150ms var(--ease-out-expo);
+  --transition-base: 300ms var(--ease-out-expo);
+  --transition-slow: 600ms var(--ease-out-expo);
+  --transition-slower: 900ms var(--ease-out-expo);
+
+  /* Z-Index Scale */
+  --z-base: 1;
+  --z-nav: 100;
+  --z-modal: 200;
+  --z-cursor: 9999;
+}
+
+/* ── Global Reset ──────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--warm-white);
+  background: var(--deep-earth);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: none;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Selection ─────────────────────────────────────────── */
+::selection {
+  background: rgba(var(--sunset-gold-rgb), 0.3);
+  color: var(--warm-white);
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--deep-earth);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--sunset-gold-rgb), 0.3);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--sunset-gold-rgb), 0.5);
+}
+
+/* ── Utility Classes ───────────────────────────────────── */
+.section {
+  position: relative;
+  padding: var(--space-section) 0;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sunset-gold);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid rgba(var(--sunset-gold-rgb), 0.3);
+  border-radius: var(--radius-full);
+  background: rgba(var(--sunset-gold-rgb), 0.05);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  background: linear-gradient(135deg, var(--warm-white) 0%, var(--mountain-stone) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--mountain-stone);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ── Glass Card Utility ────────────────────────────────── */
+.glass {
+  background: var(--glass-white);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+}
+
+.glass-strong {
+  background: var(--glass-white-strong);
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  border: 1px solid var(--glass-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+/* ── Gradient Text ─────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--sunset-gold) 0%, var(--wildflower-orange) 50%, var(--wildflower-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+  body {
+    cursor: auto;
+  }
+  button {
+    cursor: pointer;
+  }
+}

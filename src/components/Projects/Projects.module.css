@@ -1,0 +1,112 @@
+.projects {
+  background: var(--deep-earth);
+}
+
+.header {
+  margin-bottom: var(--space-3xl);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.projectCard {
+  padding: 0 !important;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.cardPreview {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.projectIcon {
+  font-size: 4rem;
+  z-index: 1;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+  transition: transform var(--transition-base);
+}
+
+.projectCard:hover .projectIcon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.previewShimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    transparent 70%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.cardBody {
+  padding: var(--space-xl);
+}
+
+.projectTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--warm-white);
+  margin-bottom: var(--space-sm);
+}
+
+.projectDesc {
+  font-size: var(--text-sm);
+  color: var(--mountain-stone);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--mountain-stone);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.tag:hover {
+  background: rgba(var(--sunset-gold-rgb), 0.1);
+  border-color: rgba(var(--sunset-gold-rgb), 0.2);
+  color: var(--sunset-gold);
+}
+
+.cardActions {
+  display: flex;
+}
+
+.cardBtn {
+  padding: 10px 20px !important;
+  font-size: var(--text-sm) !important;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

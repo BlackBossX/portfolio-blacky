@@ -1,0 +1,273 @@
+/* ═══════════════════════════════════════════════════════
+   SHARED UI COMPONENTS — Styles
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Liquid Crystal Button ─────────────────────────────── */
+.liquidBtn {
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  isolation: isolate;
+}
+
+.liquidBtn:hover {
+  transform: translateY(-2px);
+}
+
+.liquidBtn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Primary variant */
+.liquidBtn.primary {
+  color: var(--deep-earth);
+  background: linear-gradient(135deg, var(--sunset-gold) 0%, var(--warm-amber) 100%);
+  box-shadow:
+    0 4px 16px rgba(var(--sunset-gold-rgb), 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.liquidBtn.primary:hover {
+  box-shadow:
+    0 8px 32px rgba(var(--sunset-gold-rgb), 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Glass variant */
+.liquidBtn.glass {
+  color: var(--warm-white);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.liquidBtn.glass:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Accent variant */
+.liquidBtn.accent {
+  color: var(--warm-white);
+  background: linear-gradient(135deg, var(--wildflower-purple) 0%, var(--wildflower-orange) 100%);
+  box-shadow: 0 4px 16px rgba(var(--wildflower-purple-rgb), 0.3);
+}
+
+.liquidBtn.accent:hover {
+  box-shadow: 0 8px 32px rgba(var(--wildflower-purple-rgb), 0.5);
+}
+
+/* Button inner content */
+.liquidBtnContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Shine effect */
+.liquidBtnShine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle 80px at var(--mx) var(--my),
+    rgba(255, 255, 255, 0.25) 0%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.liquidBtn:hover .liquidBtnShine {
+  opacity: 1;
+}
+
+/* Glow */
+.liquidBtnGlow {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--sunset-gold), var(--wildflower-purple), var(--wildflower-orange));
+  background-size: 300% 300%;
+  opacity: 0;
+  z-index: -1;
+  filter: blur(8px);
+  transition: opacity var(--transition-base);
+  animation: gradient-flow 3s ease infinite;
+}
+
+.liquidBtn:hover .liquidBtnGlow {
+  opacity: 0.6;
+  filter: blur(8px) url(#liquid-distortion);
+}
+
+/* Ripple */
+.liquidRipple {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleExpand 0.6s ease-out forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes rippleExpand {
+  to {
+    transform: translate(-50%, -50%) scale(20);
+    opacity: 0;
+  }
+}
+
+/* ── Glass Card ────────────────────────────────────────── */
+.glassCard {
+  --card-glow: var(--sunset-gold);
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  transition: all 0.4s var(--ease-out-expo);
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.glassCard:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.glassCardGlow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--card-glow) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(
+    calc(var(--glow-x, 50%) - 100px),
+    calc(var(--glow-y, 50%) - 100px)
+  );
+  transition: opacity var(--transition-base);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.glassCard:hover .glassCardGlow {
+  opacity: 0.15;
+}
+
+/* ── Scroll Indicator ──────────────────────────────────── */
+.scrollIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--mountain-stone);
+}
+
+.scrollText {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 32px;
+  background: rgba(var(--mountain-stone), 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollDot {
+  width: 100%;
+  height: 12px;
+  background: var(--sunset-gold);
+  border-radius: 1px;
+  animation: scroll-line 2s ease-in-out infinite;
+}
+
+.scrollArrow {
+  font-size: var(--text-sm);
+  animation: bounce-scroll 2s ease-in-out infinite;
+  color: var(--sunset-gold);
+}
+
+/* ── Custom Cursor ─────────────────────────────────────── */
+.cursorDot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--sunset-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  mix-blend-mode: difference;
+  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+  will-change: transform;
+}
+
+.cursorRing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(var(--sunset-gold-rgb), 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transition: width 0.4s var(--ease-out-expo), height 0.4s var(--ease-out-expo), border-color 0.3s ease;
+  will-change: transform;
+}
+
+.cursorDot.cursorHover {
+  width: 12px;
+  height: 12px;
+  background: var(--wildflower-orange);
+}
+
+.cursorRing.cursorHover {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(var(--wildflower-purple-rgb), 0.5);
+}
+
+@media (max-width: 768px) {
+  .cursorDot,
+  .cursorRing {
+    display: none;
+  }
+}

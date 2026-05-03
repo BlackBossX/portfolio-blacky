@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Creative Developer & Designer</title>
+    <meta name="description" content="Interactive 3D portfolio showcasing creative development, design projects, and technical expertise. Built with React, Three.js, and GSAP." />
+    <meta property="og:title" content="Portfolio — Creative Developer & Designer" />
+    <meta property="og:description" content="Interactive 3D portfolio showcasing creative development and design." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- SVG Filters for Liquid Crystal Effects -->
+    <svg style="position:absolute;width:0;height:0;overflow:hidden">
+      <defs>
+        <filter id="liquid-distortion">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" seed="2" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="liquid-distortion-hover">
+          <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="4" seed="5" result="noise">
+            <animate attributeName="seed" from="0" to="100" dur="3s" repeatCount="indefinite" />
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="glass-glow">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.05  0 1 0 0 0.02  0 0 1 0 0  0 0 0 18 -7" result="glow" />
+          <feComposite in="SourceGraphic" in2="glow" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

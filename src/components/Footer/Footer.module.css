@@ -1,0 +1,101 @@
+.footer {
+  position: relative;
+  padding: var(--space-4xl) 0 var(--space-xl);
+  background: var(--dark-surface);
+  border-top: 1px solid var(--glass-border);
+}
+
+.topGlow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sunset-gold), transparent);
+  opacity: 0.4;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: var(--space-2xl);
+  align-items: start;
+  margin-bottom: var(--space-3xl);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--warm-white);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.logoIcon { color: var(--sunset-gold); }
+
+.tagline {
+  font-size: var(--text-sm);
+  color: var(--mountain-stone);
+  margin-top: var(--space-sm);
+}
+
+.linksTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--warm-white);
+  margin-bottom: var(--space-md);
+}
+
+.footLink {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--mountain-stone);
+  padding: var(--space-xs) 0;
+  transition: all var(--transition-fast);
+}
+
+.footLink:hover {
+  color: var(--sunset-gold);
+  transform: translateX(4px);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-xl);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.copyright {
+  font-size: var(--text-xs);
+  color: rgba(var(--sky-cream-rgb), 0.4);
+}
+
+.bottomLinks {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.techBadge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--mountain-stone);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+  .backToTop { grid-column: 1 / -1; }
+  .bottom { flex-direction: column; gap: var(--space-md); text-align: center; }
+}

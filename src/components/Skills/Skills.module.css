@@ -1,0 +1,112 @@
+.skills {
+  background: var(--dark-surface);
+  position: relative;
+}
+
+.canvas3d {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--space-3xl);
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.card {
+  opacity: 0;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.cardIcon {
+  font-size: 2rem;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--warm-white);
+}
+
+.skillList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.skillInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-xs);
+}
+
+.skillName {
+  font-size: var(--text-sm);
+  color: var(--warm-white);
+  font-weight: 500;
+}
+
+.skillLevel {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--mountain-stone);
+}
+
+.skillBar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--fill-color), rgba(255, 255, 255, 0.3));
+  border-radius: var(--radius-full);
+  transition: width 1.5s var(--ease-out-expo);
+  box-shadow: 0 0 8px var(--fill-color);
+}
+
+.card:hover .skillFill {
+  width: var(--fill-width) !important;
+}
+
+/* Trigger fill on scroll into view */
+.skills:global(.in-view) .skillFill,
+.card:hover .skillFill {
+  width: var(--fill-width);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
